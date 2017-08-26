@@ -3,11 +3,11 @@ import Vapor
 
 extension FCMSender: ConfigInitializable {
     public init(config: Config) throws {
-        guard let fcm = config["fcm"] else {
-            throw ConfigError.missingFile("fcm")
+        guard let firebase = config["firebase"] else {
+            throw ConfigError.missingFile("firebase")
         }
-        guard let key = fcm["key"]?.string else {
-            throw ConfigError.missing(key: ["key"], file: "fcm", desiredType: String.self)
+        guard let key = firebase["fcm-key"]?.string else {
+            throw ConfigError.missing(key: ["fcm-key"], file: "firebase", desiredType: String.self)
         }
         self = FCMSender(key: key,
                        client: try config.resolveClient(),
