@@ -52,12 +52,12 @@ public struct FCMSender: FCM {
         var json = JSON()
         try json.set("registration_ids", registrationIds)
         try json.set("notification", notification)
-        try json.setIfNotNil("collapse_key", collapseKey)
-        try json.setIfNotNil("priority", priority?.rawValue)
-        try json.setIfNotNil("content_available", contentAvailable)
-        try json.setIfNotNil("mutable_content", mutableContent)
-        try json.setIfNotNil("time_to_live", timeToLive)
-        try json.setIfNotNil("dry_run", dryRun)
+        try json.setUnlessNil("collapse_key", collapseKey)
+        try json.setUnlessNil("priority", priority?.rawValue)
+        try json.setUnlessNil("content_available", contentAvailable)
+        try json.setUnlessNil("mutable_content", mutableContent)
+        try json.setUnlessNil("time_to_live", timeToLive)
+        try json.setUnlessNil("dry_run", dryRun)
         let response = try client.post(
             "https://fcm.googleapis.com/fcm/send",
             ["Authorization": "key=\(key)",
