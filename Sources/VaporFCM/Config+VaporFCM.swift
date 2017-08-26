@@ -6,8 +6,8 @@ extension FCMSender: ConfigInitializable {
         guard let firebase = config["firebase"] else {
             throw ConfigError.missingFile("firebase")
         }
-        guard let key = firebase["fcm-key"]?.string else {
-            throw ConfigError.missing(key: ["fcm-key"], file: "firebase", desiredType: String.self)
+        guard let key = firebase["fcmKey"]?.string else {
+            throw ConfigError.missing(key: ["fcmKey"], file: "firebase", desiredType: String.self)
         }
         self = FCMSender(key: key,
                        client: try config.resolveClient(),
