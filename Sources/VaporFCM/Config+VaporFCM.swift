@@ -19,8 +19,8 @@ extension Config {
     public func resolveFCM() throws -> FCM {
         return try customResolve(
             unique: "fcm",
-            file: "fcm",
-            keyPath: ["key"],
+            file: "firebase",
+            keyPath: ["fcm"],
             as: FCM.self,
             default: FCMSender.init
         )
