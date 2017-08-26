@@ -14,9 +14,8 @@ public protocol FCM {
               dryRun: Bool?) throws -> (HTTP.Response, ResponseBody)
 }
 
-extension FCM {
-
-    func send(notification: Notification,
+public extension FCM {
+    public func send(notification: Notification,
               to registrationIds: [String]) throws -> (HTTP.Response, ResponseBody) {
         return try self.send(notification: notification,
                              to: registrationIds,
