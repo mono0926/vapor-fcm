@@ -16,6 +16,11 @@ extension FCMSender: ConfigInitializable {
 }
 
 extension Config {
+    public func addConfigurable<
+        F: FCM
+        >(fcm: @escaping Config.Lazy<F>, name: String) {
+        customAddConfigurable(closure: fcm, unique: "fcm", name: name)
+    }
     public func resolveFCM() throws -> FCM {
         return try customResolve(
             unique: "fcm",
